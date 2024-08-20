@@ -1,2 +1,28 @@
 
  hello friends
+pipeline {
+    agent any
+    
+    stages {
+        stage ('step1') {
+            steps {
+                git 'https://github.com/manikanta8686338581/myrepo.git'
+            }
+        }
+        stage ('step2') {
+            steps {
+                sh 'mkdir bi ri'
+            }
+        }
+        stage ('step3') {
+            steps {
+                sh '''
+                    mkdir d1 d2
+                    touch f1 f2
+                    cat /etc/passwd
+                    df -h
+                    '''
+            }
+        }
+    }
+}
